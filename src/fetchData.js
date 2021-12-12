@@ -1,4 +1,4 @@
-const STAR_WARS_URL = 'https://www.swapi.tech/api/'
+const STAR_WARS_URL = 'https://swapi.dev/api/'
 
 
 export const fetchVehiclesData = async () => {
@@ -12,6 +12,7 @@ export const fetchVehiclesData = async () => {
         let res1 = await fetch(v.url);
         let data1 = await res1.json();
 
+        debugger
         if (data1.result.properties.pilots.length > 0) {
             const vehicle = {
                 name: data1.result.properties.name,

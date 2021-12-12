@@ -1,7 +1,7 @@
 
+//get Vehicle name with the largest sum
 export const vehicleLogic = (vehiclesData) => {
 
-    debugger
     const populationNum = [];
     let num, populationString;
 
@@ -10,26 +10,22 @@ export const vehicleLogic = (vehiclesData) => {
         num = 0;
         v.planets.forEach(p => {
             num += parseInt(p.population);
-            populationString += p.name + " , " + p.population;
+            populationString += p.name + " , " + p.population + " ; ";
         })
 
         v.populationString = populationString;
+        v.pilotsString = v.pilots.toString();
         populationNum.push(num);
     });
 
-    // let largest = 0;
-    // let index;
-    // for (let i=0; i<=largest;i++){
-    //     if (populationNum[i]>largest) {
-    //         largest=populationNum[i];
-    //         index = i;
-    //     }
-    // }
+    const max = Math.max(...populationNum);
+    const index = populationNum.indexOf(max);
 
-    return vehiclesData[0];
+    return vehiclesData[index];
 }
 
 
+//Calculate percentages for the graph
 export const planetsLogic = (planetsData) => {
 
     const intNum = 15;

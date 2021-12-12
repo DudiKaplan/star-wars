@@ -14,7 +14,7 @@ const Table = ({title, vehicle }) => {
                 </tr>
                 <tr>
                     <td>Related pilot names</td>
-                    <td>{vehicle.pilots}</td>
+                    <td>{vehicle.pilotsString}</td>
                 </tr>
                 </tbody>
             </table>      

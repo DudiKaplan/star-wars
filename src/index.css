@@ -41,7 +41,7 @@ td {
   flex-wrap: wrap;
   align-content: stretch;
   align-items: flex-end;
-  width: 70%;
+  width: 55%;
 }
 
 
@@ -50,4 +50,12 @@ td {
   width: 5rem;
   background-color: rgb(243, 237, 237);
 
+}
+
+.Loading{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
