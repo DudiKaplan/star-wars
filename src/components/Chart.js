@@ -9,9 +9,9 @@ function Chart({title ,planets}) {
                 {planets.map((planet , index) => (
                     <Legend 
                         key={index} 
-                        population='140000'
-                        planet={planet}
-                        height='8rem' />
+                        population={planet.population}
+                        planet={planet.name}
+                        height={planet.height} />
                 ))}
             </div>
         </>
