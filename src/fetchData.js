@@ -12,25 +12,24 @@ export const fetchVehiclesData = async () => {
         let res1 = await fetch(v.url);
         let data1 = await res1.json();
 
-        debugger
-        if (data1.result.properties.pilots.length > 0) {
+        if (data1.pilots.length > 0) {
             const vehicle = {
-                name: data1.result.properties.name,
+                name: data1.name,
                 pilots: [],
                 planets: []
             };
 
-            for (const p of data1.result.properties.pilots) {
+            for (const p of data1.pilots) {
                 let res2 = await fetch(p);
                 let data2 = await res2.json();
-                vehicle.pilots.push(data2.result.properties.name);
+                vehicle.pilots.push(data2.name);
 
-                let res3 = await fetch(data2.result.properties.homeworld);
+                let res3 = await fetch(data2.homeworld);
                 let data3 = await res3.json();
 
                 const planet = {
-                    name: data3.result.properties.name,
-                    population: data3.result.properties.population
+                    name: data3.name,
+                    population: data3.population
                 }
 
                 vehicle.planets.push(planet);
@@ -55,7 +54,7 @@ export const fetchPlanetsData = async () => {
         if(planetsToShow.indexOf(p.name) > -1 ){
             let res1 = await fetch(p.url);
             let data1 = await res1.json();
-            planetsData.push(data1.result.properties);
+            planetsData.push(data1);
         }
     }
 

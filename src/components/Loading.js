@@ -3,7 +3,7 @@ import loading from '../assets/loading.gif';
 const Loading = () => {
     return (
         <div className="Loading">
-            <img src={loading} />
+            <img src={loading} alt='loading...' />
         </div>
     )
 }
