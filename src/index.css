@@ -11,3 +11,43 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App{
+  height: 100vh;
+  display: flex;
+  justify-items: center;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.Chart{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-content: stretch;
+  align-items: flex-end;
+  width: 70%;
+}
+
+
+.Legend{
+  border: 1px solid gray;
+  width: 5rem;
+  background-color: rgb(243, 237, 237);
+
+}
