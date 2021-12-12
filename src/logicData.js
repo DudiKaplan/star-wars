@@ -10,7 +10,7 @@ export const vehicleLogic = (vehiclesData) => {
         num = 0;
         v.planets.forEach(p => {
             num += parseInt(p.population);
-            populationString += p.name + " , " + p.population + " ; ";
+            populationString +=  `${p.name} , ${ p.population}  ;`;
         })
 
         v.populationString = populationString;
@@ -33,7 +33,7 @@ export const planetsLogic = (planetsData) => {
     const largest = planetsData.sort((a, b) => a.population - b.population)[planetsData.length - 1];
     planetsData.forEach(p => {
         if (p.population === largest.population) {
-            p.height = intNum + 'rem';
+            p.height = `${intNum}rem`;
         } else {
             p.height = (p.population / largest.population * intNum + 4) + 'rem';
         }

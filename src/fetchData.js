@@ -5,59 +5,73 @@ export const fetchVehiclesData = async () => {
 
     const vehiclesData = []
 
-    let res = await fetch(`${STAR_WARS_URL}vehicles`);
-    let data = await res.json();
+    try {
 
-    for(const v of  data.results) {
-        let res1 = await fetch(v.url);
-        let data1 = await res1.json();
+        let res = await fetch(`${STAR_WARS_URL}vehicles`);
+        let data = await res.json();
 
-        if (data1.pilots.length > 0) {
-            const vehicle = {
-                name: data1.name,
-                pilots: [],
-                planets: []
-            };
+        for (const v of data.results) {
+            let res1 = await fetch(v.url);
+            let data1 = await res1.json();
 
-            for (const p of data1.pilots) {
-                let res2 = await fetch(p);
-                let data2 = await res2.json();
-                vehicle.pilots.push(data2.name);
+            if (data1.pilots.length > 0) {
+                const vehicle = {
+                    name: data1.name,
+                    pilots: [],
+                    planets: []
+                };
 
-                let res3 = await fetch(data2.homeworld);
-                let data3 = await res3.json();
+                for (const p of data1.pilots) {
+                    let res2 = await fetch(p);
+                    let data2 = await res2.json();
+                    vehicle.pilots.push(data2.name);
 
-                const planet = {
-                    name: data3.name,
-                    population: data3.population
+                    let res3 = await fetch(data2.homeworld);
+                    let data3 = await res3.json();
+
+                    const planet = {
+                        name: data3.name,
+                        population: data3.population
+                    }
+
+                    vehicle.planets.push(planet);
                 }
 
-                vehicle.planets.push(planet);
+                vehiclesData.push(vehicle);
             }
+        };
 
-            vehiclesData.push(vehicle);
-        }
-    };
+        return vehiclesData
 
-    return vehiclesData
+    } catch (error) {
+        console.log(error)
+    }
+
+
 }
 
 export const fetchPlanetsData = async () => {
 
-    const planetsToShow  = ['Tatooine', 'Alderaan', 'Naboo', 'Bespin', 'Endor'];
+    const planetsToShow = ['Tatooine', 'Alderaan', 'Naboo', 'Bespin', 'Endor'];
     const planetsData = [];
 
-    let res = await fetch(`${STAR_WARS_URL}planets`);
-    let data = await res.json();
+    try {
+        let res = await fetch(`${STAR_WARS_URL}planets`);
+        let data = await res.json();
 
-    for(const p of data.results){
-        if(planetsToShow.indexOf(p.name) > -1 ){
-            let res1 = await fetch(p.url);
-            let data1 = await res1.json();
-            planetsData.push(data1);
+        for (const p of data.results) {
+            if (planetsToShow.indexOf(p.name) > -1) {
+                let res1 = await fetch(p.url);
+                let data1 = await res1.json();
+                planetsData.push(data1);
+            }
         }
+
+        return planetsData;
+    } catch (error) {
+        console.log(error)
     }
 
-    return planetsData;
+
 
 }
